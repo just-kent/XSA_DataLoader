@@ -1,0 +1,125 @@
+<mvc:View
+    height="100%"
+	controllerName="xsa_dlregui.controller.reg_dl"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.commons"
+	xmlns:u="sap.ui.unified"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:d="sap.ui.core"
+	xmlns:comp="sap.ui.comp.variants">
+	<c:ApplicationHeader 
+		id="h_appheader" 
+		logoSrc="http://www.sap.com/global/images/SAPLogo.gif" 
+		logoText="SAP UI5 Application" 
+		displayLogoff="true" 
+		userName="{/user}"
+		displayWelcome="true"/>
+	<Page title="HANA Flat Files Upload Register"
+	   		  showSubHeader="false" 
+	   		  showFooter="true"
+	   		  id="pg_reg_dl">
+		<customHeader class= "myCustomAppHdr">
+			<Bar class="myCustomAppHdr">
+				<contentMiddle>
+					<Label text="HANA Flat Files Upload Register" class="myPageHeaderLarge"/>
+				</contentMiddle>
+				<contentRight>
+					<Button id="b_home1" text="Home" press="onHome1Press" icon="sap-icon://home" />
+				</contentRight>
+			</Bar>
+		</customHeader> 
+		<Panel width="auto" class="sapUiResponsiveMargin">
+        		<headerToolbar >
+        			<Toolbar height="2rem" class="myPanelMarginTopSmall">
+        				<Title text="Instructions" class="myCustomContactBtn"/>
+        			</Toolbar>
+        		</headerToolbar>
+        	<content>
+				<Text text="1. Click button to register new project.\n2. Select table list below to edit existing registered project." />
+    		</content>
+        </Panel>
+
+        <Toolbar id="toolbar1" class="sapUiResponsiveMargin">
+		<Button id="b_cregdl" text="Register New" press="handleCreatePress" class="myCustomContactBtn" icon="sap-icon://add-activity-2"/>
+        </Toolbar >
+
+		<l:Grid
+				defaultSpan="L12 M12 S12"
+				width="auto"
+				height="80%">
+			<l:content height="80%" >
+                
+				<ScrollContainer
+                   horizontal="true"
+                   vertical="true"
+                   focusable="true"
+                   >
+					<Table
+                   	  id="reg_dlList"
+                      class="myCustomTableMargin sapUiResponsiveMargin"
+                      width="auto"
+                      height="auto"
+                      growing="true"
+                      growingThreshold="100"
+                      growingScrollToLoad="true"
+                      items="{
+                         path : 'dl_reg>/dl_reg'
+                      }" >
+						<headerToolbar>
+							<Toolbar id="toolbar2">
+								<Title text="Registered Projects" class="myCustomContactBtn"/>
+								<ToolbarSpacer/>
+								<SearchField width="50%" search="onFilterDLREG"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns >
+							<Column>
+								<Text text="ID" class="myCustomContactBtn"/>
+							</Column>
+							<Column>
+								<Text text="Project Identifier" class="myCustomContactBtn"/>
+							</Column>
+							<Column>
+								<Text text="Created by" class="myCustomContactBtn"/>
+							</Column>
+							<Column>
+								<Text text="Created on" class="myCustomContactBtn"/>
+							</Column>
+							<Column>
+								<Text text="Schema" class="myCustomContactBtn"/>
+							</Column>
+							<Column>
+								<Text text="Table" class="myCustomContactBtn"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem 
+							    type="Navigation"
+				                press="onTablePress">
+								<cells>
+									<ObjectIdentifier
+                						text="{dl_reg>ID}"/>
+									<Text
+                						text="{dl_reg>PROJ}" />
+									<Text
+                						text="{dl_reg>USER}" />
+									<Text
+                						text= "{
+                						path: 'dl_reg>DATE',
+                						formatter: '.formatter.dateText'
+                						}" />
+                					<Text
+                						text="{dl_reg>SCHEMA}" />
+                					<Text
+                						text="{dl_reg>TABLE}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</ScrollContainer>
+			</l:content>
+		</l:Grid>
+	</Page>
+</mvc:View>

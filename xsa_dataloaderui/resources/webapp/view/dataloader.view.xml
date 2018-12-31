@@ -1,0 +1,7 @@
+<mvc:View
+	controllerName="system-local.public.klai.DataLoader.controller.dataloader"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+	<App class="myAppStyle" id="dataloaderapp"/>
+</mvc:View>

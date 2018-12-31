@@ -1,0 +1,15 @@
+PROCEDURE "XSA_DataLoader.xsa_dataloaderdb::DLREG_003" ( 
+	IN TABKEY ALPHANUM(6) ,
+    OUT OUTPUT_TABLE "XSA_DataLoader.xsa_dataloaderdb::dl_reg.TT_TEMPLATEINFO")
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+     OUTPUT_TABLE = SELECT *
+                    FROM "XSA_DataLoader.xsa_dataloaderdb::dl_reg.dl_reg.dl_reg"
+                        WHERE "ID" = :TABKEY;
+END

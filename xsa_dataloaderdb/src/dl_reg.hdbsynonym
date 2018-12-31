@@ -1,0 +1,8 @@
+{
+  "XSA_DataLoader.xsa_dataloaderdb::table_columns": {
+    "target": {
+      "object": "TABLE_COLUMNS",
+      "schema": "SYS"
+    }
+  }
+}

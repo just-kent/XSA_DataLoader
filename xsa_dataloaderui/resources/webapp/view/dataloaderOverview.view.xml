@@ -1,0 +1,111 @@
+<mvc:View
+	controllerName="system-local.public.klai.DataLoader.controller.dataloader"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.commons"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:d="sap.ui.core">
+    <l:VerticalLayout width="100%" height="100%"
+    id="v_dataloaderoverview">
+   	<c:ApplicationHeader 
+		id="h_appheader" 
+		logoSrc="http://www.sap.com/global/images/SAPLogo.gif" 
+		logoText="SAP UI5 Application" 
+		displayLogoff="true" 
+		userName="{/user}"
+		displayWelcome="true"/>
+   		<Page title="HANA Flat Files Data Loader Tool" 
+	   		  showSubHeader="false" 
+	   		  showFooter="true"
+	   		  id="pg_dataloader"
+	   		  height="100%"
+	   		  class="myPosInheritPage">
+   			<customHeader class= "myCustomAppHdr">
+	   			<Bar class="myCustomAppHdr">
+		   			<contentMiddle>
+		   				<Label text="HANA Flat Files Data Loader Tool" class="myPageHeaderLarge"/>
+		   			</contentMiddle>
+		   			<contentRight>
+		   				<Button id="b_home1" text="Home" press="onHome1Press" icon="sap-icon://home" />
+		   			</contentRight>
+	   			</Bar>
+   			</customHeader>
+   			<footer>
+			<Bar>
+				<contentRight>
+					<Button id="upload" text="Upload" type="Emphasized" visible="true" press="handleExcelUpload" />
+				</contentRight>
+			</Bar>
+		</footer>
+			<Panel width="auto" class="sapUiResponsiveMargin">
+        		<headerToolbar >
+        			<Toolbar height="3rem" class="myPanelMarginTopSmall">
+        				<Title text="Instructions"/>
+        			</Toolbar>
+        		</headerToolbar>
+        		<content>
+				<Text text="1. Select Project Identifier\n2. Choose your file from local directory\n3. Click Upload button from bottom right." />
+		</content>
+	</Panel>
+
+			<Panel id="pnl_dataloader" width="auto" class="sapUiResponsiveMargin">
+   			<l:Grid
+				defaultSpan="L12 M12 S12"
+				width="auto">
+				
+				<l:content>
+					<f:SimpleForm id="sf_dataloaderform"
+						minWidth="1024"
+						labelMinWidth="200"
+						maxContainerCols="1"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						title="Data Loader"
+						labelSpanL="2"
+						labelSpanM="2"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="1"
+						columnsM="1"
+						class="editableForm">
+						<f:content>
+						<Label text="Project Identifier" textAlign="Left"/>
+						<Select id="s_projid" items="{dl_reg>/dl_reg}" width="50%" forceSelection="false" change="_onSelectChange">
+    			            <d:ListItem key="{dl_reg>ID}" text="{dl_reg>PROJ}" additionalText="{dl_reg>ID}" />
+			            </Select>
+				        
+				        <Label text="Upload" textAlign="Left"/>
+				   		    <u:FileUploader
+								id="fu_fileuploader"
+								name="myFileUpload"
+								uploadUrl=""
+								width="60%"
+								tooltip="Upload your file to the local server"
+								uploadOnChange= "false" 
+								change="onFuChange"
+								uploadComplete="handleUploadComplete"
+								uploadAboarted="handleUploadAborted"
+								uploadStart="handleUploadStart"
+								fileAllowed="handleFileAllowed"
+								uploadProgress="handleUploadProgress"/>
+						</f:content>
+				</f:SimpleForm>
+			</l:content>
+		</l:Grid>
+		</Panel>
+	
+		<l:FixFlex class="sapUiResponsiveMargin">
+		
+		<l:flexContent>
+            <viz:Popover id="idPopOver"></viz:Popover>
+            <viz:VizFrame id="idVizFrameStackedColumn" renderComplete="vizRenderComplete" xmlns="sap.viz" uiConfig="{applicationSet:'fiori'}" height="100%" width="100%"></viz:VizFrame>
+        </l:flexContent>
+        
+        </l:FixFlex>
+        
+	</Page>
+	</l:VerticalLayout >
+</mvc:View>

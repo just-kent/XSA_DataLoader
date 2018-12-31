@@ -1,0 +1,87 @@
+<core:FragmentDefinition
+		height="100%"
+		xmlns:layout="sap.ui.layout"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:core="sap.ui.core"
+		xmlns="sap.m">
+		<Page id="RegDLReviewPage" class="myReviewFormBgColor" style="background-color: aliceblue">
+			<customHeader >
+				<Bar>
+					<contentLeft>
+						<Button icon="sap-icon://nav-back"
+								press="backRegDLWizard">
+						</Button>
+					</contentLeft>
+					<contentMiddle>
+						<Title text="Summary"/>
+					</contentMiddle>
+				</Bar>
+			</customHeader >
+			<content>
+				<form:SimpleForm
+						title="1. Project Information"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Project Identifier"/>
+						<Text id="txt_rvproj" text="{valInput>/proj}"/>
+						<Label text="Project Identifier" />
+						<Label text="Schema" />
+						<Text id="txt_rvschema" text="{valInput>/schema}"/>
+						<Label text="Table" />
+						<Text id="txt_rvtable" text="{valInput>/table}"/>
+						<Link press="editStepOne" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+ 
+				<form:SimpleForm
+						title="2. Template Information"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Header"/>
+						<Text id="txt_rvheader" text="{valInput>/rvheader}"/>
+						<Label text="Rows ignore" />
+						<Text id="txt_rvrows" text="{valInput>/rows}"/>
+						<Link press="editStepTwo" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+ 
+				<form:SimpleForm
+						title="3. Procedure Information"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Procedure Schema"/>
+						<Text id="txt_rvprocschema" text="{valInput>/procschema}"/>
+						<Label text="Procedure Name" />
+						<Text id="txt_rvprocname" text="{valInput>/procname}"/>
+						<Link press="editStepThree" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+ 
+				<form:SimpleForm
+						title="4. XSJS Information"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="XSJS Name"/>
+						<Text id="txt_rvxsjsname" text="{valInput>/xsjsname}"/>
+						<Link press="editStepFour" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+			</content>
+			<footer>
+				<Bar>
+					<contentRight>
+						<Button text="Submit" press="handleWizardSubmit"></Button>
+						<Button text="Cancel" press="handleWizardCancel"></Button>
+					</contentRight>
+				</Bar>
+			</footer>
+		</Page>
+</core:FragmentDefinition>

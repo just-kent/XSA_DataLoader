@@ -1,0 +1,89 @@
+.myAppStyle .myCustomLabel1{
+		display: block;
+	    flex-shrink: 10;
+	    height: 5em;
+	    overflow: visible;
+	    white-space: normal;
+	    width: 13em;
+	    word-wrap: break-word;
+	    margin-right: 5rem;
+	}
+.myAppStyle .myCustomButton.sapMBtn {
+  margin-left: 50%;
+  margin-right: -50%;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.myAppStyle .myCustomContactBtn {
+  font-weight: bold;
+}
+.myAppStyle .myCustomLToolbar{
+		height: 6em;
+	}
+.myAppStyle .myCustomAppHdr{	
+	background-color: #0079ad;
+	}
+.myAppStyle .myCustomTableMargin{	
+	padding-bottom: 3rem;
+	margin-left: 15px !important;
+	margin-right: 15px !important;
+	}
+.myAppStyle .myCustomFileUploadMargin{	
+	padding-right:1rem;
+	}
+.myAppStyle .myCustomAttachmentMargin{	
+	padding:0;
+	}
+.myAppStyle .myCustomPageMargin{	
+	margin-bottom:10rem;
+	padding:10px;
+	}
+.myAppStyle.myCustomFooter{
+    height:44px; 
+	margin: -44px 0 0;
+	background-color:#176A9E;
+	background-repeat:repeat-y;
+	position: relative;
+}
+.myCustomRight{
+    float:right;
+}
+.myCustomLabel1{
+		display: block;
+	    flex-shrink: 10;
+	    height: 5em;
+	    overflow: visible;
+	    white-space: normal;
+	    font-weight: bold;
+	    width: 13em;
+	    word-wrap: break-word;
+	    margin-right: 20px !important;
+	    margin-left: 45px !important;
+	}
+.myCustomBoldTitle{
+    font-weight: bolder;
+}
+.myCustomContactBtn {
+  font-weight: bold;
+}
+.myPosInheritPage {
+    position: inherit;
+}
+.myCustomMarginSmall {
+  margin-left: 15px!important;
+  margin-right: 15px!important;
+}
+.myCustomMargin42px {
+  margin-left: 42px!important;
+  margin-right: 42px!important;
+}
+.myPanelMarginTopSmall {
+    margin-top:2.5% !important;
+}
+.myPageHeaderLarge {
+    font-size: medium;
+    font-weight: bold;
+}
+.myReviewFormBgColor {
+    background-color: #F0F8FF !important;
+}

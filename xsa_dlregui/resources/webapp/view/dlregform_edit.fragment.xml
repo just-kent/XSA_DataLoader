@@ -1,0 +1,106 @@
+<d:FragmentDefinition
+	id="v_dlregchange"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:d="sap.ui.core"
+	controllerName="xsa_dlregui.controller.reg_dlform">
+	<l:Grid
+		defaultSpan="L12 M12 S12"
+		width="auto">
+		<l:content>
+		<Panel>
+		<f:SimpleForm id="sf_dlregedit_general"
+				minWidth="1024"
+				maxContainerCols="1"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanL="1"
+				labelSpanM="1"
+				emptySpanL="1"
+				emptySpanM="1"
+				columnsL="1"
+				columnsM="1"
+				class="editableForm">
+				<f:content>
+					<d:Title text="Project Information"/>
+						<Label text="Project ID" />
+						<Input id="i_projid"
+        						   value="{dl_reg>ID}"
+        						   editable= "false" />
+        				<Label text="Project Identifier" />
+						<Input id="i_proj"
+        						   value="{dl_reg>PROJ}"
+        						   editable= "false" />
+        				<Label text="Create by" />
+						<Input id="i_createby"
+        						   value="{dl_reg>USER}"
+        						   editable= "false" />
+        				<Label text="Create on" />
+						<Input id="i_createon"
+        						   value="{
+                						path: 'dl_reg>DATE',
+                						formatter: '.dateText'
+                						}"
+        						   editable= "false" />
+        		</f:content>
+        	</f:SimpleForm>
+	</Panel>
+		
+			<f:SimpleForm id="sf_dlregedit"
+				minWidth="1024"
+				maxContainerCols="2"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanL="2"
+				labelSpanM="1"
+				emptySpanL="0"
+				emptySpanM="0"
+				columnsL="2"
+				columnsM="1"
+				class="editableForm">
+				<f:content>
+        				<d:Title text="Table Information"/>
+						<Label text="Schema" />
+						<Input id="i_schema"
+        						   value="{dl_reg>SCHEMA}"
+        						   editable= "true"/>
+						<Label text="Table" />
+						<Input id="i_table"
+        						   value="{dl_reg>TABLE}"
+        						   editable= "true"/>
+        						   
+        			<d:Title text="Template Information"/>
+        				<Label text="Header name" />
+						<MultiInput id="i_header"
+        						   value=""
+        						   enableMultiLineMode="true"
+        						   placeholder="Example: _BIC_ER000484"
+        						   editable= "true"
+        						   tokenChange="tokenValidation"/>
+        				<Label text="Rows ignore" />
+						<Input id="i_rows"
+        						   value="{dl_reg>ROWS}"
+        						   editable= "true" />
+        						   
+        			<d:Title text="Procedure Information"/>
+						<Label text="Procedure schema" />
+						<Input id="i_procschema"
+        						   value="{dl_reg>PROCSCHEMA}"
+        						   editable= "true" />
+        				<Label text="Procedure name" />
+        				<Input id="i_procname"
+        						   value="{dl_reg>PROCNAME}"
+        						   editable= "true" />
+        						   
+        			<d:Title text="XSJS Information"/>
+        				<Label text="XSJS name" />
+        				<Input id="i_xsjsname"
+        						   value="{dl_reg>XSJSNAME}"
+        						   placeholder="Example: ./model/misc.xsjs?cmd=get_username"
+        						   editable= "true" />
+				</f:content>
+			</f:SimpleForm>
+		</l:content>
+	</l:Grid>
+</d:FragmentDefinition>

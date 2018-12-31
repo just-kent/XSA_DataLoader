@@ -1,0 +1,174 @@
+<d:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.commons"
+	xmlns:u="sap.ui.unified"
+	xmlns:d="sap.ui.core"
+	xmlns:t="sap.ui.table"
+	xmlns:comp="sap.ui.comp.variants"
+	controllerName="xsa_dlregui.controller.reg_dl">
+	<Page showSubHeader="false" 
+	   	  showFooter="true"
+	   	  id="pg_reg_new">
+	<footer>
+			<Bar>
+				<contentRight>
+				    <Button id="b_prev" text="Prev" type="Emphasized" visible="false" press="handlePrev" />
+				    <Button id="b_next" text="Next" type="Emphasized" visible="true" press="handleNext" />
+					<Button id="b_fin" text="Finish" type="Emphasized" visible="false" press="handleFinish" />
+				</contentRight>
+			</Bar>
+		</footer>
+	<VBox
+		class="sapUiSmallMargin"
+		alignItems="Stretch">
+ 
+		<c:RoadMap id="oRMap" 
+		           numberOfVisibleSteps="4" 
+		           selectedStep="__component0---v_reg_dlOverview--rms_step1" 
+		           stepSelected="onstepSelected">
+
+            <c:RoadMapStep id="rms_step1" label="Step 1" />
+            <c:RoadMapStep id="rms_step2" label="Step 2" />
+            <c:RoadMapStep id="rms_step3" label="Step 3" />
+            <c:RoadMapStep id="rms_step4" label="Step 4" />
+
+    </c:RoadMap>
+    <NavContainer width="100%" height="30rem" id="navCon">
+        <Page title="Step 1" id="p1">
+            <f:SimpleForm id="sf_dl_regform1"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<d:Title text="Table Information"/>
+						<Label text="Project Identifier" />
+						<Input id="i_proj"
+        						   value=""
+        						   editable= "true" />
+						<Label text="Schema" />
+						<Input id="i_schema"
+        						   value=""
+        						   showSuggestion="true"
+        						   showValueHelp="true"
+        						   valueHelpRequest="onValueHelpRequest"
+        						   suggest="handleSuggest"
+        						   suggestionItems="{dl_reg>/dl_reg}">
+        				    <suggestionItems>
+            					<d:Item text="{dl_reg>SCHEMA}" />
+            				</suggestionItems>
+        				</Input>
+						<Label text="Table" />
+						<Input id="i_table"
+						       showValueHelp="true"
+						       valueHelpRequest="onValueHelpRequest"
+        					   value=""/>
+        			</f:content>
+        	</f:SimpleForm>
+        </Page>
+        <Page title="Step 2" id="p2">
+            <f:SimpleForm id="sf_dl_regform2"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<d:Title text="Template Information"/>
+        				<Label text="Header name" />
+						<MultiInput id="i_header"
+        						   value=""
+        						   enableMultiLineMode="true"
+        						   placeholder="Example: _BIC_ER000484"
+        						   editable= "true" />
+        				<Label text="Rows ignore" />
+						<Input id="i_rows"
+        						   value=""
+        						   editable= "true" />
+        			</f:content>
+        	</f:SimpleForm>
+        </Page>
+        <Page title="Step 3" id="p3">
+            <f:SimpleForm id="sf_dl_regform3"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<d:Title text="Procedure Information"/>
+						<Label text="Auto generate"/>
+						<RadioButtonGroup 
+						    id="rbg_proc"
+						    columns="2">
+						    <RadioButton
+						        id="rb_procopt1"
+						        text="No"/>
+						    <RadioButton
+						        id="rb_procopt2"
+						        text="Yes"/>
+						</RadioButtonGroup>
+						<Label text="Procedure schema" />
+						<Input id="i_procschema"
+        						   value=""
+        						   showValueHelp="true"
+						           valueHelpRequest="onValueHelpRequest"
+        						   editable= "true" />
+        				<Label text="Procedure name" />
+        				<Input id="i_procname"
+        						   value=""
+        						   showValueHelp="true"
+    						       valueHelpRequest="onValueHelpRequest"
+        						   editable= "true" />
+        			</f:content>
+        	</f:SimpleForm>
+        </Page>
+        <Page title="Step 4" id="p4">
+            <f:SimpleForm id="sf_dl_regform4"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<d:Title text="XSJS Information"/>
+        				<Label text="XSJS name" />
+        				<Input id="i_xsjsname"
+        						   value=""
+        						   editable= "true" />
+        			</f:content>
+        	</f:SimpleForm>
+        	
+        </Page>
+    </NavContainer>
+    </VBox>
+    </Page>
+</d:FragmentDefinition>

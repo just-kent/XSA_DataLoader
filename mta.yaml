@@ -1,0 +1,46 @@
+ID: XSA_DataLoader
+_schema-version: '2.0'
+version: 0.0.1
+
+modules:
+ - name: xsa_dataloaderdb
+   type: hdb
+   path: xsa_dataloaderdb
+   requires:
+    - name: hdi_xsa_dataloaderdb
+
+
+ - name: xsa_dataloaderjs
+   type: nodejs
+   path: xsa_dataloaderjs
+   provides:
+    - name: xsa_dataloaderjs_api
+      properties:
+         url: ${default-url}
+
+
+ - name: xsa_dataloaderui3
+   type: html5
+   path: xsa_dataloaderui3
+
+
+ 
+
+
+ - name: xsa_dataloaderui
+   type: html5
+   path: xsa_dataloaderui
+
+
+ 
+
+
+ - name: xsa_dlregui
+   type: html5
+   path: xsa_dlregui
+
+resources:
+ - name: hdi_xsa_dataloaderdb
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container

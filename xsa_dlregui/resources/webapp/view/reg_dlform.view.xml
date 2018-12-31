@@ -1,0 +1,23 @@
+<mvc:View
+	id="v_simpleform"
+	height="100%"
+	controllerName="xsa_dlregui.controller.reg_dlform"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page
+		id="p_dlregform"
+		showHeader="true" 
+		showNavButton="true"
+		navButtonPress="onNavBack">
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="save" text="Save" type="Emphasized" visible="true" press="handleSavePress" width="5rem"/>
+					<Button id="cancel" text="Cancel" type="Emphasized" visible="true" press="handleCancelPress" width="5rem"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

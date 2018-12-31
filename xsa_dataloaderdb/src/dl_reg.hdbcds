@@ -1,0 +1,68 @@
+namespace XSA_DataLoader.xsa_dataloaderdb;
+
+context dl_reg {
+    context dl_reg {
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity attachment {
+            key ID    : String(6) not null;
+                ATTCH : LargeBinary;
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity coltable {
+            key PROJID      : String(6) not null;
+            key SEQ         : Integer   not null;
+                COLUMN_NAME : String(200);
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity dl_reg {
+            key ID         : String(6) not null;
+                PROJ       : String(60);
+                USER       : String(60);
+                DATE       : LocalDate;
+                SCHEMA     : String(200);
+                TABLE      : String(200);
+                HEADER     : String(200);
+                ROWS       : String(200);
+                PROCSCHEMA : String(200);
+                PROCNAME   : String(200);
+                XSJSNAME   : String(200);
+        };
+
+        /*@@layout{"layoutInfo":{}}*/
+        entity LoadStat {
+            key PROJID : String(6)  not null;
+            key USER   : String(20) not null;
+            key DATE   : LocalDate  not null;
+        };
+    };
+
+    table type TT_DLTABLECOL {
+        COLUMN_NAME    : String(256);
+        POSITION       : Integer;
+        DATA_TYPE_NAME : String(16);
+        OFFSET         : Integer;
+        LENGTH         : Integer;
+        SCALE          : Integer;
+    };
+    table type TT_TEMPLATEINFO {
+        ID         : String(6);
+        PROJ       : String(60);
+        USER       : String(60);
+        DATE       : String(6);
+        SCHEMA     : String(200);
+        TABLE      : String(200);
+        HEADER     : String(500);
+        ROWS       : String(200);
+        PROCSCHEMA : String(200);
+        PROCNAME   : String(200);
+        XSJSNAME   : String(200);
+    };
+    table type TT_TEMPLATEHDR {
+        PROJID      : String(6);
+        SEQ         : Integer;
+        COLUMN_NAME : String(200);
+    };
+};

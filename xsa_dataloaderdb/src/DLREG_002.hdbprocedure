@@ -1,0 +1,19 @@
+PROCEDURE "XSA_DataLoader.xsa_dataloaderdb::DLREG_002" ( 
+	IN TABKEY ALPHANUM(6) , 
+    OUT OUTPUT_TABLE "XSA_DataLoader.xsa_dataloaderdb::dl_reg.TT_DLTABLECOL")
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name> 
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   OUTPUT_TABLE = SELECT b."COLUMN_NAME", b."POSITION",b."DATA_TYPE_NAME", b."OFFSET", b."LENGTH", b."SCALE"
+                    FROM "XSA_DataLoader.xsa_dataloaderdb::dl_reg.dl_reg.dl_reg" as a
+                        INNER JOIN "XSA_DataLoader.xsa_dataloaderdb::table_columns" as b
+                            ON a."SCHEMA" = b."SCHEMA_NAME"
+                            AND a."TABLE" = b."TABLE_NAME"
+                                WHERE a."ID" = :TABKEY
+                                    ORDER BY b."POSITION";
+END

@@ -1,0 +1,7 @@
+<mvc:View
+	controllerName="xsa_dlregui.controller.reg_dl"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true">
+	<App class="myAppStyle" id="reg_dlapp"/>
+</mvc:View>

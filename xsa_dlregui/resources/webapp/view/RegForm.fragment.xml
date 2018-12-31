@@ -1,0 +1,179 @@
+<d:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:c="sap.ui.commons"
+	xmlns:u="sap.ui.unified"
+	xmlns:d="sap.ui.core"
+	controllerName="xsa_dlregui.controller.reg_dl">
+	<NavContainer id="wizardNavContainer">
+	<pages>
+		<Page
+		id="wizardContentPage"
+		showHeader="false">
+	<content>
+		<Wizard id="RegisterDLWizard"
+				complete="wizardCompletedHandler">
+			<WizardStep id="ProjIdentStep"
+						title="Project Information"
+						validated="false">
+            <f:SimpleForm id="sf_ProjIdent"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<Label text="Project Identifier" />
+						<Input id="i_proj"
+        						   value="{valInput>/proj}"
+        						   editable= "true"
+        						   valueState="{inputState>/projIdentState}"
+        						   liveChange="projValidation"/>
+						<Label text="Schema" />
+						<Input id="i_schema"
+        						   value="{valInput>/schema}"
+        						   showValueHelp="true"
+        						   valueHelpRequest="onValueHelpRequest"
+        						   valueState="{inputState>/tableSchemaState}"
+        						   liveChange="projValidation">
+        				</Input>
+						<Label text="Table" />
+						<Input id="i_table"
+						       showValueHelp="true"
+						       valueHelpRequest="onValueHelpRequest"
+        					   value="{valInput>/table}"
+        					   valueState="{inputState>/tableNameState}"
+        					   liveChange="projValidation"/>
+        			</f:content>
+        	</f:SimpleForm>
+        	</WizardStep>
+        	<WizardStep id="TemplateInfoStep"
+						title="Template Information"
+						validated="false">
+            <f:SimpleForm id="sf_TemplateInfo"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+        				<Label text="Header name" />
+						<MultiInput id="i_header"
+        						   value="{valInput>/header}"
+        						   enableMultiLineMode="true"
+        						   placeholder="Example: _BIC_ER000484"
+        						   editable= "true"
+        						   valueState="{inputState>/templateHdrState}"
+        					       tokenChange="tokenValidation"/>
+        				<Label text="Rows ignore" />
+						<Input id="i_rows"
+        						   value="{valInput>/rows}"
+        						   editable= "true"
+        						   valueState="{inputState>/templateRowsState}"
+        					       liveChange="templateValidation"/>
+        			</f:content>
+        	</f:SimpleForm>
+        	</WizardStep>
+        	<WizardStep id="ProcedureInfoStep"
+						title="Procedure Information"
+						validated="false">
+            <f:SimpleForm id="sf_ProcedureInfo"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<Label text="Auto generate"/>
+						<RadioButtonGroup 
+						    id="rbg_proc"
+						    columns="2"
+						    select="onRGBSelect">
+						    <RadioButton
+						        id="rb_procopt1"
+						        text="No"/>
+						    <RadioButton
+						        id="rb_procopt2"
+						        text="Yes"/>
+						</RadioButtonGroup>
+						<Label text="Procedure schema" />
+						<Input id="i_procschema"
+        						   value="{valInput>/procschema}"
+        						   showValueHelp="true"
+						           valueHelpRequest="onValueHelpRequest"
+        						   editable= "true"
+        						   valueState="{inputState>/procedureSchemaState}"
+        					       liveChange="procValidation"/>
+        				<Label text="Procedure name" />
+        				<Input id="i_procname"
+        						   value="{valInput>/procname}"
+        						   showValueHelp="true"
+    						       valueHelpRequest="onValueHelpRequest"
+        						   editable= "true"
+        						   valueState="{inputState>/procedureNameState}"
+        					       liveChange="procValidation"/>
+        			</f:content>
+        	</f:SimpleForm>
+        	</WizardStep>
+        	<WizardStep id="XSJSInfoStep"
+						title="XSJS Information"
+						validated="false">
+            <f:SimpleForm id="sf_dl_regform4"
+						minWidth="1024"
+						maxContainerCols="2"
+						editable="true"
+						layout="ResponsiveGridLayout"
+						labelSpanL="4"
+						labelSpanM="3"
+						emptySpanL="1"
+						emptySpanM="1"
+						columnsL="2"
+						columnsM="1"
+						class="editableForm">
+					<f:content>
+						<Label text="Use default service?" />
+						<CheckBox id="cb_df_xsjs"
+							      text="Yes" selected="true" />
+        				<Label text="XSJS name" />
+        				<Input id="i_xsjsname"
+        						   placeholder="dl_upload.xsjs"
+        						   value="{valInput>/xsjsname}"
+        						   editable= "true"
+        						   valueState="{inputState>/xsjsNameState}"
+        					       liveChange="xsjsValidation"/>
+        			</f:content>
+        	</f:SimpleForm>
+        	</WizardStep>
+		</Wizard>
+		</content>
+    		<footer>
+				<Bar>
+					<contentRight>
+						<Button text="Cancel" press="handleWizardCancel"></Button>
+					</contentRight>
+				</Bar>
+			</footer>
+    </Page>
+    </pages>
+    </NavContainer>
+</d:FragmentDefinition>
