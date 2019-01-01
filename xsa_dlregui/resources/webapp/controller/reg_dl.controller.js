@@ -165,10 +165,11 @@ sap.ui.define([
 		},
 		_getProjID: function(self) {
 			// Get the next available Project ID to be created
-			var url = './model/dl_reg.xsjs?cmd=get_id_next';
-			jQuery.ajax({
+			var url = 'dl_reg.xsjs?cmd=get_id_next';
+			$.ajax({
 				url: url,
 				method: 'GET',
+				contentType: "application/json",
 				dataType: 'json',
 				success: function(data) {
 					// Trigger function to create the Project Register

@@ -1,5 +1,18 @@
 {
-	"welcomeFile": "webapp/index.html",
+	"welcomeFile": "index.html",
 	"authenticationMethod": "none",
-	"routes": []
+	"routes": [
+		{
+		"source": ".*\\.xsjs.*$", 
+		"destination": "xsa_dataloaderjs_be"
+	}, {
+		"source": "(.*)(.xsjs.*)", 
+		"destination": "xsa_dataloaderjs_be"
+	}, {
+		"source": "^/dl_reg.xsjs.*$", 
+		"destination": "xsa_dataloaderjs_be"
+	}, {
+         "source": ".*\\.xsjs",
+         "destination": "xsa_dataloaderjs_be"
+     }]
 }
