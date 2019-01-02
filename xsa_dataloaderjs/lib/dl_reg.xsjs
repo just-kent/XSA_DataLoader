@@ -1,8 +1,8 @@
 function get_nextid() {
 	$.response.contentType = "text/html";
 	var output = 0;
-	var conn = $.hdb.getConnection();
-	var pstmt = conn.prepareStatement( "SELECT TO_INT(MAX(ID)) from \"KLAI\".\"system-local.public.klai.DataLoader.model::dataloader.dl_reg\"" );
+	var conn = $.db.getConnection();
+	var pstmt = conn.prepareStatement( "SELECT TO_INT(MAX(ID)) from \"XSA_DataLoader.xsa_dataloaderdb::dl_reg.dl_reg.dl_reg\"" );
 	var rs = pstmt.executeQuery();
 
 	if (!rs.next()) {
@@ -23,8 +23,8 @@ function get_column() {
 	$.response.contentType = "text/html";
 	var conn = $.hdb.getConnection();
 	var projid = $.request.parameters.get('projid');  
-	var fndlreg = conn.loadProcedure('KLAI', 'system-local.public.klai.DataLoader.procedure::DLREG_002');
-    var result = fndlreg(projid, null);
+	var fndlreg = conn.loadProcedure("XSA_DataLoader.xsa_dataloaderdb::DLREG_002");
+    var result = fndlreg({TABKEY: projid});
 	conn.close();
     $.response.setBody(JSON.stringify(result));
 	return result;
@@ -32,8 +32,8 @@ function get_column() {
 function get_tablelist() {
 	$.response.contentType = "text/html";
 	var conn = $.hdb.getConnection();
-	var fndlreg = conn.loadProcedure('KLAI', 'system-local.public.klai.DataLoader.procedure::DLREG_007');
-    var result = fndlreg(null);
+	var fndlreg = conn.loadProcedure("XSA_DataLoader.xsa_dataloaderdb::DLREG_007");
+    var result = fndlreg();
 	conn.close();
     $.response.setBody(JSON.stringify(result));
 	return result;
@@ -41,8 +41,8 @@ function get_tablelist() {
 function get_proclist() {
 	$.response.contentType = "text/html";
 	var conn = $.hdb.getConnection();
-	var fndlreg = conn.loadProcedure('KLAI', 'system-local.public.klai.DataLoader.procedure::DLREG_008');
-    var result = fndlreg(null);
+	var fndlreg = conn.loadProcedure("XSA_DataLoader.xsa_dataloaderdb::DLREG_008");
+    var result = fndlreg();
 	conn.close();
     $.response.setBody(JSON.stringify(result));
 	return result;
@@ -55,14 +55,14 @@ function get_schemalist() {
 
 	switch(objtype){
 	    case "hdbtable":  
-        proc = "system-local.public.klai.DataLoader.procedure::DLREG_009"; 
+        proc = "XSA_DataLoader.xsa_dataloaderdb::DLREG_009"; 
         break;
         case "hdbprocedure":  
-        proc = "system-local.public.klai.DataLoader.procedure::DLREG_010"; 
+        proc = "XSA_DataLoader.xsa_dataloaderdb::DLREG_010"; 
         break;
 	}
-	var fndlreg = conn.loadProcedure('KLAI', proc);
-    var result = fndlreg(null);
+	var fndlreg = conn.loadProcedure(proc);
+    var result = fndlreg();
 	conn.close();
     $.response.setBody(JSON.stringify(result));
 	return result;
@@ -71,8 +71,8 @@ function get_templateinfo() {
 	$.response.contentType = "text/html";
 	var conn = $.hdb.getConnection();
 	var projid = $.request.parameters.get('projid');  
-	var fndlreg = conn.loadProcedure('KLAI', 'system-local.public.klai.DataLoader.procedure::DLREG_003');
-    var result = fndlreg(projid, null);
+	var fndlreg = conn.loadProcedure("XSA_DataLoader.xsa_dataloaderdb::DLREG_003");
+    var result = fndlreg({TABKEY:projid});
 	conn.close();
     $.response.setBody(JSON.stringify(result));
 	return result;
@@ -80,8 +80,8 @@ function get_templateinfo() {
 function get_columninfo(schemaname, tablename) {
 	$.response.contentType = "text/html";
 	var conn = $.hdb.getConnection();
-	var pd_colinfo = conn.loadProcedure('KLAI', 'system-local.public.klai.DataLoader.procedure::DLREG_005');
-    var result = pd_colinfo(schemaname, tablename, null);
+	var pd_colinfo = conn.loadProcedure("XSA_DataLoader.xsa_dataloaderdb::DLREG_005");
+    var result = pd_colinfo({SCHEMANAME: schemaname, TABLENAME: tablename});
 	conn.close();
     //$.response.setBody(JSON.stringify(result));
 	return result;

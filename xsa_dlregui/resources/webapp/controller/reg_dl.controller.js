@@ -20,22 +20,22 @@ sap.ui.define([
 		formatter: formatter,
 		onInit: function(oEvent) {
 			//1. Initialize Model
-			var oRegModel = new sap.ui.model.odata.v2.ODataModel("./model/dl_reg.xsodata");
+			var oRegModel = new sap.ui.model.odata.v2.ODataModel("dl_reg.xsodata");
 			this.getView().setModel(oRegModel, "dl_reg");
 			// User defined column table
-			ocolTabModel = new sap.ui.model.odata.v2.ODataModel("./model/coltable.xsodata");
+			ocolTabModel = new sap.ui.model.odata.v2.ODataModel("coltable.xsodata");
 			this.getView().setModel(ocolTabModel, "coltable");
 			// Input Help data for hdbtable schema
-			oSchemaTabModel.loadData("./model/dl_reg.xsjs?cmd=get_schemalist&objtype=hdbtable");
+			oSchemaTabModel.loadData("dl_reg.xsjs?cmd=get_schemalist&objtype=hdbtable");
 			// Input Help data for hdbtable name
-			oSchemaNTabModel.loadData("./model/dl_reg.xsjs?cmd=get_tablelist");
+			oSchemaNTabModel.loadData("dl_reg.xsjs?cmd=get_tablelist");
 			// Input Help data for hdbprocedure schema
-			oProcTabModel.loadData("./model/dl_reg.xsjs?cmd=get_schemalist&objtype=hdbprocedure");
+			oProcTabModel.loadData("dl_reg.xsjs?cmd=get_schemalist&objtype=hdbprocedure");
 			// Input Help data for hprocedureschema
-			oProcNTabModel.loadData("./model/dl_reg.xsjs?cmd=get_proclist");
+			oProcNTabModel.loadData("dl_reg.xsjs?cmd=get_proclist");
 			// Set username detail into JSON model
 			var oUserModel = new sap.ui.model.json.JSONModel();
-			oUserModel.loadData("./model/misc.xsjs?cmd=get_username");
+			oUserModel.loadData("misc.xsjs?cmd=get_username");
 			this.getView().setModel(oUserModel);
 
 			this.inputchk = {};

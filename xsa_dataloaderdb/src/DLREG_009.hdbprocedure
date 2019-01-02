@@ -1,0 +1,24 @@
+PROCEDURE "XSA_DataLoader.xsa_dataloaderdb::DLREG_009"( 
+	OUT OUTPUT_TABLE "XSA_DataLoader.xsa_dataloaderdb::dl_reg.TT_SCHEMATAB"
+	)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY DEFINER
+	READS SQL DATA
+AS
+BEGIN
+	OUTPUT_TABLE = SELECT SCHEMA_NAME
+					FROM "XSA_DataLoader.xsa_dataloaderdb::m_cs_tables" AS a
+						INNER JOIN (
+												SELECT CONCAT(
+									CONCAT(
+										PACKAGE_ID, 
+										'::'
+									), 
+									OBJECT_NAME
+								) AS "TABLENAME"
+							FROM "XSA_DataLoader.xsa_dataloaderdb::active_object"
+							WHERE "OBJECT_SUFFIX" = 'hdbtable'
+						) AS b
+						ON a.TABLE_NAME = b.TABLENAME
+					GROUP BY a.SCHEMA_NAME;
+END

@@ -27,7 +27,7 @@ sap.ui.define([
 			var that = this;
 			this._showFormFragment("dlregform_edit");
 			this.selectedid = oEvent.getParameter("arguments").dlregPath.split("'")[1];
-			var hdrModel = new sap.ui.model.odata.v2.ODataModel("./model/coltable.xsodata");
+			var hdrModel = new sap.ui.model.odata.v2.ODataModel("./coltable.xsodata");
 			var myfilter = [new sap.ui.model.Filter({  
                                       path: 'PROJID',  
                                       operator: sap.ui.model.FilterOperator.EQ,  
@@ -279,7 +279,7 @@ sap.ui.define([
 				return oFormFragment;
 			}  
 			oFormFragment = sap.ui.xmlfragment(this.getView().getId(), 
-                			"xsa_dlregui.DataLoader.view." + sFragmentName, 
+                			"xsa_dlregui.view." + sFragmentName, 
                 			this.getView().getController());
 			return this._formFragments[sFragmentName] = oFormFragment;
 		},

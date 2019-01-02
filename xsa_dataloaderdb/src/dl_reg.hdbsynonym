@@ -4,5 +4,23 @@
       "object": "TABLE_COLUMNS",
       "schema": "SYS"
     }
+  },
+  "XSA_DataLoader.xsa_dataloaderdb::m_cs_tables": {
+    "target": {
+      "object": "M_CS_TABLES",
+      "schema": "SYS"
+    }
+  },
+  "XSA_DataLoader.xsa_dataloaderdb::active_object": {
+    "target": {
+      "object": "ACTIVE_OBJECT",
+      "schema": "_SYS_REPO"
+    }
+  },
+  "XSA_DataLoader.xsa_dataloaderdb::procedures": {
+    "target": {
+      "object": "PROCEDURES",
+      "schema": "SYS"
+    }
   }
-}
+} 

@@ -1,0 +1,19 @@
+PROCEDURE "XSA_DataLoader.xsa_dataloaderdb::DLREG_005"(
+	IN SCHEMANAME VARCHAR(200),
+    IN TABLENAME VARCHAR(200),
+    OUT COLUMNINFO "XSA_DataLoader.xsa_dataloaderdb::dl_reg.TT_DLTABLECOL"
+)
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   --DEFAULT SCHEMA <default_schema_name>
+   READS SQL DATA AS
+BEGIN
+   /*************************************
+       Write your procedure logic 
+   *************************************/
+   COLUMNINFO = SELECT COLUMN_NAME, POSITION, DATA_TYPE_NAME, OFFSET, LENGTH, SCALE
+                    FROM "XSA_DataLoader.xsa_dataloaderdb::table_columns"
+                        WHERE SCHEMA_NAME = :SCHEMANAME
+                          AND TABLE_NAME = :TABLENAME
+                            ORDER BY POSITION;
+END

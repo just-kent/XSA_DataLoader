@@ -1,0 +1,3 @@
+service {
+"XSA_DataLoader.xsa_dataloaderdb::dl_reg.dl_reg.dl_reg" as "dl_reg";
+}

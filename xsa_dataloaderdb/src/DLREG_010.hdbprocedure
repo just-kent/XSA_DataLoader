@@ -1,0 +1,13 @@
+PROCEDURE "XSA_DataLoader.xsa_dataloaderdb::DLREG_010"(
+	OUT OUTPUT_TABLE "XSA_DataLoader.xsa_dataloaderdb::dl_reg.TT_SCHEMATAB"
+	)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY DEFINER
+	READS SQL DATA
+AS
+BEGIN
+	OUTPUT_TABLE = SELECT SCHEMA_NAME
+			FROM "XSA_DataLoader.xsa_dataloaderdb::procedures"
+			WHERE PROCEDURE_NAME LIKE 'XSA_DataLoader.%'
+			GROUP BY SCHEMA_NAME;
+END

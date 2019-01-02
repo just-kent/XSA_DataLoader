@@ -14,5 +14,9 @@
 	}, {
          "source": ".*\\.xsjs",
          "destination": "xsa_dataloaderjs_be"
-     }]
+     },
+     {
+		"source": "(.*)(.xsodata.*)", 
+		"destination": "xsa_dataloaderjs_be"
+	}]
 }

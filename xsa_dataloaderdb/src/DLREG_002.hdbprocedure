@@ -2,7 +2,7 @@ PROCEDURE "XSA_DataLoader.xsa_dataloaderdb::DLREG_002" (
 	IN TABKEY ALPHANUM(6) , 
     OUT OUTPUT_TABLE "XSA_DataLoader.xsa_dataloaderdb::dl_reg.TT_DLTABLECOL")
    LANGUAGE SQLSCRIPT
-   SQL SECURITY INVOKER
+   SQL SECURITY DEFINER
    --DEFAULT SCHEMA <default_schema_name> 
    READS SQL DATA AS
 BEGIN
