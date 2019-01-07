@@ -65,7 +65,15 @@
 				"settings": {
 					"bundleName": "xsa_dlregui.i18n.i18n"
 				}
-			}
+			},
+			 "": {
+            "dataSource": "mainService",
+            "preload": true,
+            "settings": {
+                "defaultBindingMode": "TwoWay",
+                "defaultUpdateMethod": "sap.ui.model.odata.UpdateMethod.Put"
+            }
+        }
 		},
 		"resources": {
 			"css": [{

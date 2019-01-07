@@ -141,6 +141,7 @@ sap.ui.define([
 		},
 		handleSavePress : function (oEvent) {
 			var oEntry = {};
+			var oEntry2 = {};
 		    var procsel = "";
 		    var self = this;
 		    var oHdrEntry = {};
@@ -162,25 +163,11 @@ sap.ui.define([
 				this.getView().getModel("dl_reg").update(updatepath, oEntry, {
 					success: function(data){
 					    self._updateHdr(self.getView().byId("i_header").getTokens(),oEntry.ID);
-					    debugger;
 					    var bCompact = !!self.getView().$().closest(".sapUiSizeCompact").length;
-        			 //   sap.m.MessageBox.success(
-            // 				"Successfully save changes",
-            // 				{
-            // 					styleClass: bCompact? "sapUiSizeCompact" : ""
-            // 				}
-            // 			);
 					    sap.m.MessageToast.show("Changed Successfull");
 					    self.onNavBack();
 					    }, //need to show alert message and force update on Odata Model to reflect changes across controls
 					error: function(e){
-					   // var bCompact = !!self.getView().$().closest(".sapUiSizeCompact").length;
-        // 			    sap.m.MessageBox.error(
-        //     				"Failed to save changes.",
-        //     				{
-        //     					styleClass: bCompact? "sapUiSizeCompact" : ""
-        //     				}
-        //     			);
 						sap.m.MessageToast.show("Alert! Failed to register");
 						self.onNavBack();
 					}
@@ -188,7 +175,7 @@ sap.ui.define([
 				
 		},
 		_updateHdr: function(myTokens, myid){
-		    var oHdrModel = new sap.ui.model.odata.ODataModel("./model/coltable.xsodata");
+		    var oHdrModel = new sap.ui.model.odata.ODataModel("coltable.xsodata");
             //this.getView().setModel(oTabModel, "coltable");
             var batchChanges = [];
             var orichanges = [];

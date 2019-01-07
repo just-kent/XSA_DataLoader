@@ -18,7 +18,7 @@ context dl_reg {
 
         /*@@layout{"layoutInfo":{}}*/
         entity dl_reg {
-            key ID         : String(6) not null;
+            key ID         : hana.ALPHANUM(6) not null;
                 PROJ       : String(60);
                 USER       : String(60);
                 DATE       : LocalDate;
@@ -70,6 +70,6 @@ context dl_reg {
     };
     table type TT_MCSTABLES {
         SCHEMA_NAME : String(200);
-        TABLE_NAME  : String (200);
+        TABLE_NAME  : String(200);
     };
 };

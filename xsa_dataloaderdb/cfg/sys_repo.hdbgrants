@@ -1,0 +1,20 @@
+{
+  "XSA_DataLoader-table-grantor": {
+    "object_owner" : {
+      "schema_privileges":[
+        {
+          "reference":"_SYS_REPO",
+          "privileges_with_grant_option":["SELECT"]
+        }
+      ]
+    },
+    "application_user" : {
+      "schema_privileges":[
+        {
+          "reference":"_SYS_REPO",
+          "privileges_with_grant_option":["SELECT"]
+        }
+      ]
+    }
+  }
+}

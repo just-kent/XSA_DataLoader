@@ -8,8 +8,12 @@ modules:
     requires:
       - name: hdi_xsa_dataloaderdb
         properties:
-          TARGET_CONTAINER: '~{hdi-container-name}'
-      - name: XSA_DataLoader-table-grantor
+          TARGET_CONTAINER: '~{hdi-container-service}'
+      - name: cross-container-service
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: XSA_DataLoader-table-grantor
+          service: '~{the-service-name}'
   - name: xsa_dataloaderjs
     type: nodejs
     path: xsa_dataloaderjs
@@ -38,13 +42,11 @@ modules:
 resources:
   - name: hdi_xsa_dataloaderdb
     properties:
-      hdi-container-name: '${service-name}'
+      hdi-container-service: '${service-name}'
     type: com.sap.xs.hdi-container
-  - name: XSA_DataLoader-table-grantor
-    type: org.cloudfoundry.existing-service
-  - name: consumed-core-container
+  - name: cross-container-service
     type: org.cloudfoundry.existing-service
     parameters:
-      service-name: KLAI-mng2vrmuk77ow0ds-XSA_DataLoader-hdi_xsa_dataloaderdb
+      service-name: XSA_DataLoader-table-grantor
     properties:
-      consumed-service-name: '${service-name}'
+      the-service-name: '${service-name}'

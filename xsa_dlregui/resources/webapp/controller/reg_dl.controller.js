@@ -3,7 +3,8 @@ sap.ui.define([
 		"xsa_dlregui/model/formatter",
 		"sap/ui/model/Filter",
 		"sap/ui/model/FilterOperator",
-		"sap/ui/ux3/OverlayContainer"
+		"sap/ui/ux3/OverlayContainer",
+		"sap/ui/model/odata/UpdateMethod"
 	], function(Controller, formatter, Filter, FilterOperator) {
 	"use strict";
 	var overlayCon;
@@ -20,7 +21,10 @@ sap.ui.define([
 		formatter: formatter,
 		onInit: function(oEvent) {
 			//1. Initialize Model
-			var oRegModel = new sap.ui.model.odata.v2.ODataModel("dl_reg.xsodata");
+			var oRegModel = new sap.ui.model.odata.v2.ODataModel(
+				{serviceUrl: "dl_reg.xsodata",
+				defaultBindingMode: "TwoWay",
+				defaultUpdateMethod: sap.ui.model.odata.UpdateMethod.Put});
 			this.getView().setModel(oRegModel, "dl_reg");
 			// User defined column table
 			ocolTabModel = new sap.ui.model.odata.v2.ODataModel("coltable.xsodata");

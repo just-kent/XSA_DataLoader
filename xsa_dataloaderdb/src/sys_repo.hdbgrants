@@ -1,9 +1,0 @@
-{
-  "XSA_DataLoader-table-grantor": {
-     "object_owner": {
-           "roles": [
-               "EPM_XXX::external_access_g"
-           ]
-     }
-  }
-}
